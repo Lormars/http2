@@ -1735,6 +1735,7 @@ func (cc *ClientConn) writeHeaders(streamID uint32, endStream bool, maxFrameSize
 }
 
 func (cc *ClientConn) sendEndStreams() {
+	time.Sleep(100 * time.Millisecond)
 	cc.mu.Lock()
 	streamIDs := make([]*Endstream, len(cc.endStreams))
 	copy(streamIDs, cc.endStreams)
